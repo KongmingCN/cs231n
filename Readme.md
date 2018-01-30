@@ -5,3 +5,6 @@
 
 2018.1.30
 完成assignment1中knn.ipynb（交叉验证技巧 numpy操作）
+
+
+asdasdasdasdasdasd
