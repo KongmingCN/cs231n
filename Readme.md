@@ -9,3 +9,5 @@
 2018.2.1
 完成assignment1中svm.ipynb（numpy向量化操作 svm损失函数实践  SGD实践）
 
+2018.2.1
+完成assignment1中softmax.ipynb（类比svm的实现 交叉验证超参数 softmax损失函数实践）
