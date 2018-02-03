@@ -16,3 +16,6 @@
 ## 2018.2.3
 完成assignment1中2-layers-network.ipynb（Relu 前向传播 反向传播（配合维度相容原则快速判断）softmax作为loss function 超参数调优) (判断准确率为52%）
 **ps: 双层神经网络可以逼近任何连续函数（强大之处）**
+
+## 2018.2.3
+完成assignment1中的feature.ipynb（特征工程可有效提高模型的准确率：线性svm准确率达到42%， 两层神经网络准确率达到58%）
