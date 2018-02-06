@@ -21,4 +21,7 @@
 完成assignment1中的feature.ipynb（特征工程可有效提高模型的准确率：线性svm准确率达到42%， 两层神经网络准确率达到58%）
 
 ## 2018.2.4
-完成assignment2中的fullconventionalnet.ipynb（模块化编程 参数矩阵预生成 参数最优化方法：动量方法 学习率退火 RMSProp Adam）
+完成assignment2中的fullyconnectednet.ipynb（模块化编程 参数矩阵预生成 参数最优化方法：动量方法 学习率退火 RMSProp Adam）
+
+## 2018.2.6
+完成assignment2中的batchnorm.ipynb，给全连接神经网络添加BN层（batchnorm可有效提高收敛速和模型的泛化能力）
