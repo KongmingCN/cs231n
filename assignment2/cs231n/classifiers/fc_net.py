@@ -268,17 +268,26 @@ class FullyConnectedNet(object):
         # layer, etc.                                                              #
         ############################################################################
         affine_relu_cache = {}
+        if self.use_dropout:
+            dropout_cache = {}
+
         for i in range(self.num_layers-1):
             if self.use_batchnorm:
                 if i == 0:
                     affine_relu_out, affine_relu_cache[i] = affine_bn_relu_forward(X, self.params['W1'], self.params['b1'], self.params['gamma1'], self.params['beta1'], self.bn_params[i])
                     continue
+                if self.use_dropout:
+                    affine_relu_out, dropout_cache[i] = dropout_forward(affine_relu_out, self.dropout_param)
                 affine_relu_out, affine_relu_cache[i] = affine_bn_relu_forward(affine_relu_out, self.params['W%d'%(i+1)], self.params['b%d'%(i+1)], self.params['gamma%d'%(i+1)], self.params['beta%d'%(i+1)], self.bn_params[i])
             else:
                 if i == 0:
                     affine_relu_out, affine_relu_cache[i] = affine_relu_forward(X, self.params['W1'], self.params['b1'])
                     continue
+                if self.use_dropout:
+                    affine_relu_out, dropout_cache[i] = dropout_forward(affine_relu_out, self.dropout_param)
                 affine_relu_out, affine_relu_cache[i] = affine_relu_forward(affine_relu_out, self.params['W%d'%(i+1)], self.params['b%d'%(i+1)])
+        if self.use_dropout:
+            affine_relu_out, dropout_cache[self.num_layers-1] = dropout_forward(affine_relu_out, self.dropout_param)
         scores, affine_relu_cache[self.num_layers-1] = affine_forward(affine_relu_out, self.params['W%d'%self.num_layers], self.params['b%d'%self.num_layers])    
         ############################################################################
         #                             END OF YOUR CODE                             #
@@ -312,6 +321,8 @@ class FullyConnectedNet(object):
                     grads['W%d'%self.num_layers] = dw + self.reg * self.params['W%d'%self.num_layers]
                     grads['b%d'%self.num_layers] = db
                     continue
+                if self.use_dropout:
+                    dout = dropout_backward(dout, dropout_cache[self.num_layers-i])
                 dout, dw, db, dgamma, dbeta = affine_bn_relu_backward(dout, affine_relu_cache[self.num_layers-1-i])
                 grads['W%d'%(self.num_layers-i)] = dw + self.reg * self.params['W%d'%(self.num_layers-i)]
                 grads['b%d'%(self.num_layers-i)] = db
@@ -323,6 +334,8 @@ class FullyConnectedNet(object):
                     grads['W%d'%self.num_layers] = dw + self.reg * self.params['W%d'%self.num_layers]
                     grads['b%d'%self.num_layers] = db
                     continue
+                if self.use_dropout:
+                    dout = dropout_backward(dout, dropout_cache[self.num_layers-i])
                 dout, dw, db = affine_relu_backward(dout, affine_relu_cache[self.num_layers-1-i])
                 grads['W%d'%(self.num_layers-i)] = dw + self.reg * self.params['W%d'%(self.num_layers-i)]
                 grads['b%d'%(self.num_layers-i)] = db
