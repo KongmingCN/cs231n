@@ -27,4 +27,7 @@
 完成assignment2中的batchnorm.ipynb，给全连接神经网络添加BN层（batchnorm可有效提高收敛速和模型的泛化能力）
 
 ## 2018.2.6
-完成assignm2中dropout.ipynb，给全连接神经网络激活层后添加dropout处理，提高了模型的泛化能力，在测试集上准确率提升。
+完成assignment2中dropout.ipynb，给全连接神经网络激活层后添加dropout处理，提高了模型的泛化能力，在测试集上准确率提升。
+
+## 2018.2.8
+完成assignment2中convolutionalnetworks.ipynb（卷积神经网络Python完成 类似fcnet）
