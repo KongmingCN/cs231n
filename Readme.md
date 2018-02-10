@@ -31,3 +31,10 @@
 
 ## 2018.2.8
 完成assignment2中convolutionalnetworks.ipynb（卷积神经网络Python完成 类似fcnet）
+
+## 2018.2.9
+配置tensorflow-GPU（配置cuda9-0, 默认cuda9.1不支持tensorflow，需降版本  添加环境变量 cudnn7-0-5 anaconda中配置tensorflow）
+学习tensorflow document, stanford cs20
+
+## 2018.2.10
+完成assignment2中tensorflow.ipynb（用gpu并行计算conv-relu-bn-pool-affine-relu-dropout-affine-softmax架构， 准确率达到70.6%，且具备良好的泛化能力）
